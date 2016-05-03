@@ -9,6 +9,7 @@
   "author": "Nagisa Yata",
   "license": "ISC",
   "devDependencies": {
-    "grunt": "^1.0.1"
+    "grunt": "^1.0.1",
+    "gulp-jade": "^1.1.0"
   }
 }
