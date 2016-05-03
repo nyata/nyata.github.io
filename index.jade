@@ -1,14 +1,11 @@
+//- index.jade
 doctype html
 html(lang='ja')
   head
     title test
+    style(link='style/style.css')
   body
-    header
-      ol
-        li top
-        li education
-        li skills
-        li contact
+    include ./includes/menu.jade
     container
       article
         h1 Name
