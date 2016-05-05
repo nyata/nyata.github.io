@@ -1,7 +1,16 @@
+// menu
 menu {
   display: block;
   float: left;
+  ul {
+    list-style-type: none;
+    background-image: url(images/flowers.png);
+    li.triangle {
+    }
+  }
 }
+
+// main
 container {
   display: block;
   float: right;
