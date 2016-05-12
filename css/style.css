@@ -75,9 +75,10 @@ container {
         text-align: left;
         position: relative;
         padding: 2em 0;
-        margin-top: 2em;
-        margin-bottom: 2em;
+        margin-top: 40px;
+        margin-bottom: 10px;
         height: 200px;
+        width: 100%;
         overflow: hidden; }
         container wrapper#experience ul#timeline:before {
           content: '';
@@ -111,6 +112,18 @@ container {
             right: 100%;
             border: 7px solid transparent;
             border-right: 7px solid #FFF8F0; }
+      container wrapper#experience .arrow-down, container wrapper#experience .arrow-up {
+        position: relative; }
+      container wrapper#experience .arrow-down::before, container wrapper#experience .arrow-up::before {
+        border-style: solid;
+        border-width: 20px 20px 0px;
+        border-color: #231B42 transparent;
+        content: ' ';
+        left: 0px;
+        position: absolute;
+        background-color: transparent; }
+      container wrapper#experience .arrow-up::before {
+        border-width: 0px 20px 20px; }
     container wrapper#project {
       background: #D6B3B1;
       color: #231B42; }

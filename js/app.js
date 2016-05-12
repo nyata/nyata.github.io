@@ -1,8 +1,16 @@
-$(window).on('scroll', function(){
-  $('ul#timeline li').each(function(){
-    //if( $(this).offset().top <= $(window).scrollTop()+$(window).height()*0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden') ) {
-    //  $(this).find('.timeline-point, .timeline-comment').removeClass('is-hidden').addClass('bounce-in');
-    //}
-    console.log(1);
+$(function() {
+  var point_num = 11;
+  var timeline_count = 1;
+  $('.arrow-up').on('click', function(){
+    if(timeline_count > 1) {
+      $('ul#timeline li:nth-child('+timeline_count+')').show();
+      timeline_count--;
+    }
+  });
+  $('.arrow-down').on('click', function(){
+    if(timeline_count < 10) {
+      $('ul#timeline li:nth-child('+timeline_count+')').hide();
+      timeline_count++;
+    }
   });
 });
