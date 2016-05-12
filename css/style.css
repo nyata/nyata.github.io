@@ -11,7 +11,8 @@ body {
   align-items: center; }
 
 h1 {
-  font-size: 32px; }
+  font-size: 32px;
+  margin: 10px 0px; }
 
 h2 {
   font-size: 24px; }
@@ -27,6 +28,7 @@ nav {
   position: fixed; }
   nav ul {
     list-style-type: none;
+    text-align: left;
     background-position: 0px 0px;
     background-position: 0px -100px;
     background-position: 0px -200px;
@@ -38,9 +40,19 @@ nav {
       clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
       opacity: 0.7;
       color: white;
-      line-height: 180px;
+      line-height: 100px;
       text-align: center;
       font-weight: bold; }
+      nav ul li.hexagon#menu-cover {
+        background: #231B42; }
+      nav ul li.hexagon#menu-experience {
+        background: #EF7792; }
+      nav ul li.hexagon#menu-project {
+        background: #D6B3B1; }
+      nav ul li.hexagon#menu-skill {
+        background: #C6D8C0; }
+      nav ul li.hexagon#menu-contact {
+        background: #FFF8F0; }
 
 container {
   display: block;
@@ -59,11 +71,54 @@ container {
     container wrapper#experience {
       background: #EF7792;
       color: #231B42; }
-    container wrapper#skills {
+      container wrapper#experience ul#timeline {
+        text-align: left;
+        position: relative;
+        padding: 2em 0;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        height: 200px;
+        overflow: hidden; }
+        container wrapper#experience ul#timeline:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 18px;
+          height: 100%;
+          width: 4px;
+          background: #231B42; }
+        container wrapper#experience ul#timeline li .timeline-point {
+          position: absolute;
+          left: 0;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #FFF8F0; }
+        container wrapper#experience ul#timeline li .hidden {
+          visiblity: hidden; }
+        container wrapper#experience ul#timeline li .timeline-comment {
+          position: relative;
+          margin-left: 60px;
+          line-height: 40px;
+          margin-bottom: 10px;
+          padding: 5px;
+          background: #FFF8F0;
+          border-radius: 5px; }
+          container wrapper#experience ul#timeline li .timeline-comment:before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            right: 100%;
+            border: 7px solid transparent;
+            border-right: 7px solid #FFF8F0; }
+    container wrapper#project {
       background: #D6B3B1;
       color: #231B42; }
-    container wrapper#contact {
+    container wrapper#skill {
       background: #C6D8C0;
+      color: #231B42; }
+    container wrapper#contact {
+      background: #FFF8F0;
       color: #231B42; }
     container wrapper article {
       text-align: center; }

@@ -5,11 +5,13 @@ html(lang='ja')
     title test
     link(rel='stylesheet' type='text/css' href='css/cssrefresh.css')
     link(rel='stylesheet' type='text/css' href='css/style.css')
+    script(src='js/jquery.js')
     script(src='js/app.js')
   body
     include ./includes/menu.jade
     container
       include ./includes/cover.jade
       include ./includes/experience.jade
-      include ./includes/skills.jade
+      include ./includes/project.jade
+      include ./includes/skill.jade
       include ./includes/contact.jade
