@@ -31,3 +31,5 @@ gulp.task('sass-watch', ['sass'], function() {
     console.log('sass: File ' + event.path);
   });
 });
+
+gulp.task('watch', ['jade-watch', 'sass-watch']);
