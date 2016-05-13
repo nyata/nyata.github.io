@@ -1,4 +1,7 @@
 $(function() {
+  // menu
+
+  // experience
   var point_num = 11;
   var timeline_count = 1;
   $('.arrow-up').on('click', function(){

@@ -1,3 +1,6 @@
+// font
+@import "font_style";
+
 // variables
 $dark-color: #231B42;
 $accent-color: #EF7792;
@@ -12,6 +15,7 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
+  font-family:Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
 }
 body {
   display: flex;
@@ -31,6 +35,14 @@ h3 {
 p {
   font-size: 14px;
 }
+a, a:visited {
+  color: $dark-color;
+}
+li {
+  line-height: 24px;
+}
+
+
 
 // menu
 nav {
@@ -63,6 +75,7 @@ nav {
       }
       &#menu-contact {
         background: $bright-color;
+        color: $dark-color;
       }
     }
     @for $i from 1 to 5 {
@@ -163,6 +176,11 @@ container {
     &#project {
       background: $second-color;
       color: $dark-color;
+      ul {
+        width: 70%;
+        text-align: left;
+        margin: 0 auto;
+      }
     }
     &#skill {
       background: $light-color;
@@ -171,6 +189,16 @@ container {
     &#contact {
       background: $bright-color;
       color: $dark-color;
+      a {
+        text-decoration: none;
+      }
+      .icon-facebook2, .icon-github {
+        font-size: 50px;
+        margin: 0 10px;
+      }
+      img {
+        display: block;
+      }
     }
     article {
       text-align: center;
