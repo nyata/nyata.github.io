@@ -59,7 +59,9 @@ li {
 
 nav {
   display: block;
-  position: fixed; }
+  position: fixed;
+  top: 0;
+  left: 0; }
   nav ul {
     list-style-type: none;
     text-align: left;
