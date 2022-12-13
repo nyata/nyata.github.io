@@ -5,7 +5,6 @@ import base_path from "lume/plugins/base_path.ts";
 
 const site = lume({
     src: "./src",
-    dest: "./output",
 });
 
 site.use(postcss());
