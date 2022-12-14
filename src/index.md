@@ -3,7 +3,7 @@ layout: layout.njk
 title: Index
 ---
 
-# Index page
+# nyata.github.io
 
 - [portfolio](./portfolio)
 - [posts](./posts)

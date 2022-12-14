@@ -11,4 +11,6 @@ site.use(postcss());
 site.use(terser());
 site.use(base_path());
 
+site.copy('css');
+
 export default site;

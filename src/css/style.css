@@ -1,0 +1,29 @@
+html, body {
+    width: 100%;
+    font-family: "Noto Sans JP";
+    background-color: lightyellow;
+    color: black;
+}
+content {
+    display: block;
+    width: 60%;
+    padding: 30px;
+    min-height: 800px;
+    margin: 0px auto;
+    background-color: white;
+}
+content h1 {
+    border-bottom: 1px solid black;
+}
+content li {
+    line-height: 200%;
+}
+content a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+content a:hover {
+    text-decoration-line: underline;
+    background: lightskyblue;
+}
