@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Lumeでさくっとお手軽ポートフォリオサイトを作成</title>
+  <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css"></link>
+  <link rel="stylesheet" href="/css/prism.css"></link>
+  <script src="/javascript/prism.js"></script>
+</head>
+<body>
+  <content>
+    <span>2022年12月15日</span>
+    <author>nyata</author>
+    <h1>[2022-12-15] Lumeでさくっとお手軽ポートフォリオサイトを作成</h1>
+<h2>はじめに</h2>
+<p>この記事は<a href="https://adventar.org/calendars/7471">TECH PLAY女子部 Advent Calendar 2022</a>の15日目に参加させていただいております。</p>
+<p>こんにちは、都内でエンジニアをやっているnyataです。
+今回アドベントカレンダーに参加させてもらうので、何かやろうと思ったんですがあんまり思いつかず数年間ほったらかしていたポートフォリオサイトを更新することにしました。
+ついでにアドベントカレンダーを投稿する先のブログがなかったのでブログも作れるといいなと思いチャレンジすることにしました。</p>
+<p><strong>殆どLumeのチュートリアルをやった感じの記事です</strong></p>
+<h2>目的</h2>
+<ul>
+<li>ポートフォリオサイトの更新</li>
+<li>アドベントカレンダー記事の作成</li>
+</ul>
+<h2>利用技術</h2>
+<ul>
+<li><a href="https://lume.land/">Lume</a>
+<ul>
+<li>deno製のStatic site generator</li>
+<li>Slack platformにdenoが採用されたと聞いて触ってみたかったので採用
+<ul>
+<li><strong>結局ほとんどdenoはさわれませんでした</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Github Actions/Github pages
+<ul>
+<li>もともとGithub pagesに大学のときに作成したポートフォリオサイトを置いていたのでそこをそのまま利用</li>
+</ul>
+</li>
+</ul>
+<h2>やったこと</h2>
+<h3>ローカル開発環境のセットアップ</h3>
+<p>denoとLumeをインストールします。</p>
+<pre><code class="language-shell">$ curl -fsSL https://deno.land/x/install/install.sh | sh
+$ deno run -Ar https://deno.land/x/lume/init.ts
+</code></pre>
+<p>=&gt; 下記ファイルが作成されます</p>
+<ul>
+<li>deno.json</li>
+<li>deno.lock</li>
+<li>import_map.json</li>
+<li>_config.ts</li>
+</ul>
+<h3>_config.tsを変更</h3>
+<p>srcディレクトリ以下にコードを置くことにしたので、下記を修正しました。</p>
+<pre><code class="language-js">const site = lume({
+    src: &quot;./src&quot;,
+});
+</code></pre>
+<h3>src/portfolio.mdを作成</h3>
+<p>今回、さくっと作りたかったので一番お手軽そうなMarkdownを採用</p>
+<pre><code class="language-markdown"># Nagisa YATA
+
+内容
+</code></pre>
+<p>ここまで作成して</p>
+<pre><code class="language-shell">$ deno task lume --serve
+</code></pre>
+<p>を実行しブラウザから<code>http://localhost:3000/portfolio</code>でアクセスすると表示されていることが確認できます。</p>
+<h3>一応Layoutファイルを使ってみる</h3>
+<p>「nunjacks」というテンプレートエンジンがデフォルトで使えるみたいなので、<code>src/_includes</code>ディレクトリを作成し`layouts.njkファイルをおき、以下のように中身を作成します。</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;{{ title }}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;content&gt;
+    {{ content | safe }}
+  &lt;/content&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>portfolio.mdを変更すると</p>
+<pre><code class="language-markdown">---
+layout: layout.njk
+title: Portfolio
+---
+
+# Nagisa YATA
+
+...内容...
+</code></pre>
+<p>変数をbindしていい感じに表示できます。</p>
+<h3>デプロイ</h3>
+<p>いい感じになったらGithub Actionsでデプロイをします。
+ここ→ https://lume.land/docs/advanced/deployment/#github-pages にあるのをそのまま <code>.github/workflows/cd.yml</code>ファイルにおきます。
+わたしのRepositoryはmasterブランチにしてたので、<code>main</code>のところを<code>master</code>に変更しました。
+<code>gh-pages</code>ブランチに生成されたファイルなどが置かれるので、Repositoryの設定からGithub pagesは<code>gh-pages</code>ブランチを参照するように変更します。</p>
+<p>▽ そうするとかなりシンプルな感じですが、こういう感じのページが作成できます。
+<img src="/images/20221215-posts.png" /></p>
+<h3>おまけ</h3>
+<ul>
+<li><code>.njk</code>ファイルで普通にhtmlがかけるのでcssやjavascriptも読み込むことができます</li>
+<li>静的ファイルも置けます</li>
+</ul>
+<h2>感想</h2>
+<p>プレーンなページなら本当にサクッと作成することができました。
+css, jsが入ってくるとちょっとめんどいですが、1時間ほどあればそれっぽい感じのページにすることはできそうです。(CSSフレームワークを使えばもっと簡単にできるかも)</p>
+<p>Markdownだけでなく、Javascript(Typescript)でページの内容を作成してレンダリングすることもできるみたいなので余裕があれば試してみたかったです。
+ブログの一覧作成などが簡単にできそうでした。</p>
+<p>実装が半分くらい終わったところで<a href="https://github.com/lumeland/base-blog">Lumeで作るブログのサンプル</a>を見つけてしまったのでこっちを参考にすればよかったなと思いました。</p>
+<p>このページやポートフォリオの詳細は<a href="https://github.com/nyata/nyata.github.io">Githubのリポジトリに上がっている</a>のでそちらを確認してください。</p>
+<h2>まとめ</h2>
+<ul>
+<li>Lumeでさくっとポートフォリオ兼ブログページを作成し、Github pagesにデプロイしました</li>
+<li>Denoはほとんどさわれませんでした</li>
+</ul>
+<p><a href="/posts">&lt; Posts</a></p>
+<p><a href="/">&lt; Index</a></p>
+
+  </content>
+</body>
+</html>
