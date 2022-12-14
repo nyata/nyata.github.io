@@ -22,8 +22,13 @@ content a:visited {
     text-decoration: none;
     color: black;
 }
-
 content a:hover {
     text-decoration-line: underline;
     background: lightskyblue;
+}
+code {
+    background-color: lightgray;
+}
+img {
+    width: 100%;
 }
